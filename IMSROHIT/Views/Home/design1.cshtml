@@ -1,0 +1,36 @@
+﻿@model HomeViewModel;
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <h1>@Model.Title</h1>
+    @*<h4 class="text-warning text-right">@Model.date</h4>*@
+    <table class="table table-hover">
+        <thead class="table table-primary">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Time and Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr>
+                    <td>@Model.employees.id</td>
+                    <td>@Model.employees.Name</td>
+                    <td>@Model.employees.Email</td>
+                    <td>@Model.employees.Department</td>
+                    <td>@Model.Date</td>
+                </tr>
+            
+        </tbody>
+    </table>
+</body>
+</html>
+

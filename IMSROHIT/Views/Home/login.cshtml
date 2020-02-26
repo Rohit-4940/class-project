@@ -1,0 +1,60 @@
+﻿@model Home;
+<html>
+<head>
+    <title></title>
+
+    <link href="~/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <style>
+        body {
+            background-color: #FBFCFC;
+        }
+
+        .container {
+            background-color: white;
+            height: 500px;
+            width: 450px;
+            margin-top: 50px;
+        }
+
+        .text {
+            background-color: dodgerblue;
+            height: 40px;
+            width: 420px;
+        }
+
+        .foot {
+            background-color: dodgerblue;
+            height: 40px;
+            width: 420px;
+            margin-top: 30px;
+        }
+    </style>
+    <form action="" method="post">
+        <div class="container">
+            <div class="text"></div>
+            <h2 class="text-center" style="margin-top:40px">Member Login</h2>
+            <div class="form-group">
+                <div class="input-group" style="margin-top:50px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="email" type="text" class="form-control" name="username" placeholder="Email">
+                </div>
+                <div class="input-group" style="margin-top:35px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="input-group" style="margin-top:35px">
+                    <button class="btn btn-outline-primary col-12">Login</button>
+                </div>
+                <div style="margin-top:20px">
+                    <h5 class="text-center text-danger" style="cursor:pointer">Forget Password!</h5><br />
+                </div>
+                <p class="text-center" style="margin-top:-25px">Create new account!<span class="text-primary font-weight-bold" style="cursor:pointer"><a href="/Home/signup">signup</a></span></p>
+            </div>
+            <div class="foot"></div>
+
+        </div>
+    </form>
+</body>
+</html>

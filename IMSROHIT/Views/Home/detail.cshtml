@@ -1,0 +1,44 @@
+﻿@model HomedetailViewModel;
+@{
+    var photopath = "~/images/" + (Model.home.photopath ?? "img1.jpg");
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <style>
+        .card:hover {
+            border: 8px solid yellow;
+        }
+
+        .card {
+            border: 3px solid black;
+        }
+
+        
+    </style>
+    <div class="row justify-content-center mt-5">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-info text-capitalize font-weight-bolder">@Model.home.Name</h1>
+                </div>
+
+                <div class="card-body text-center">
+                    <img class="card-img-top" src="@photopath" asp-append-version="true" />
+                    <h4 class="form-control font-weight-bolder text-capitalize"><span class="text-info">Employee ID</span>:&nbsp;@Model.home.id</h4>
+                    <h4 class="form-control font-weight-bolder text-capitalize"><span class="text-info">Name</span>:&nbsp;@Model.home.Name</h4>
+                    <h4 class="form-control font-weight-bolder text-capitalize"><span class="text-info">Email</span>:&nbsp;@Model.home.Email</h4>
+                    <h4 class="form-control font-weight-bolder text-capitalize"><span class="text-info">Department</span>:&nbsp;@Model.home.Department</h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-warning" asp-controller="Home" asp-action="Index">Back</a>
+                    <a class="btn btn-info" asp-controller="Home" asp-action="edit" asp-route-id="@Model.home.id">Edit</a>
+                    <a class="btn btn-danger" as-action="delete" asp-route-id="@Model.home.id,@Model.home.photopath">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

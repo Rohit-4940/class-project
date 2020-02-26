@@ -1,0 +1,72 @@
+﻿
+@model IEnumerable<IMSROHIT.Models.Home>
+
+
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <title></title>
+    </head>
+
+    <body>
+        <style>
+            .tex{
+                 font-family:cursive;
+            }
+        </style>
+        <form asp-action="design" method="GET">
+            <div class="row input-group mt-3 mb-2">
+                <h2 class="ml-4 tex text-info">Employee List</h2>
+                <input type="text" name="search" id="search" class="ml-auto col-md-3" style="height:40px;" />
+                <div class="input-group-btn float-right">
+                    <input type="submit" value="search" class="btn btn-info" />
+                </div>
+            </div>
+        </form>
+        <table class="table table-hover">
+            <thead class="table table-primary table-bordered  font-weight-bolder">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-bordered">
+                @foreach (var empo in Model)
+                {
+                    <tr class="tblrow">
+                        <td>@empo.id</td>
+                        <td>@empo.Name</td>
+                        <td>@empo.Email</td>
+                        <td>@empo.Department</td>
+                        <td><a asp-route-id="@empo.id">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @section Scripts{ 
+        <script>
+            $(document).ready(function () {
+                function Contains(text_one, text_two) {
+                    if (text_one.indexOf(text_two) != -1)
+                        return true;
+                }
+                $("#search").keyup(function () {
+                    var searchText = $("#search").val().toLowerCase();
+                    $(".tblrow").each(function () {
+                        if (!Contains($(this).text().toLowerCase(), searchText)) {
+                            $(this).hide();
+                        }
+                        else {
+                            $(this).show();
+                        }
+                    });
+                });
+            });
+        </script>
+        }
+
+    </body>
+    </html>

@@ -1,0 +1,87 @@
+﻿@model HomecreateViewModel;
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+    <title></title>
+</head>
+<body>
+    <style>
+    body {
+    background-color: #FBFCFC  ;
+    }
+
+    .container {
+    background-color: white;
+    height: 500px;
+    width: 1100px;
+    margin-top: 57px;
+    }
+    .text-center{
+            font-family:cursive;
+        }
+    </style>
+    <form asp-controller="Home" asp-action="create" method="Post" class="mt-3" enctype="multipart/form-data">
+        <div class="container">
+            <div class="text"></div>
+            <h2 class="text-center" style="margin-top:30px">Create Form</h2>
+            <div class="form-group">
+                @*<div class="input-group" style="margin-top:35px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="id" type="text" class="form-control" name="id" placeholder="Enter Your id(Not Nessary)">
+                </div>*@
+                <div class="input-group" style="margin-top:25px">
+
+                    <input id="Name" type="text" class="form-control" name="Name" placeholder="Enter Your Name"><br />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="Email" type="text" class="form-control" name="Email" placeholder="Email"><br />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="text" class="form-control" name="Department" placeholder="Department">
+                   @*<select asp-for="Department" class="custom-select" asp-items="Html.GetEnumSelectList<Dept>()" style="cursor:pointer;">
+                    <option value="" >Please select the Department List</option>
+                   </select>*@
+                    <br />
+                </div>
+                <span asp-validation-for="Department" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+
+                    <div class="custom-file">
+                        <input class="form-control custom-file-input" multiple asp-for="photos">
+                        <label class="custom-file-label">choose the file......</label>
+                    </div>
+                    <br />
+                </div>
+                <div class="input-group" style="margin-top:45px">
+                    <button class="btn btn-info">Create</button>
+                </div>
+
+
+                <div class="footer"></div>
+            </div>
+        </div>
+        @section Scripts{
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var filelabel = $(this).next('.custom-file-label');
+                        var files = $(this)[0].files;
+                        if (files.length > 1) {
+                            filelabel.html(files.length + 'files selected')
+                        }
+                        else if (files.length == 1) {
+                            filelabel.html(files[0].name);
+                        }
+                    });
+                });
+            </script>
+        }
+    </form>
+
+</body>
+</html>

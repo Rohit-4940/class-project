@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\IMSROHIT",
+    "\\IMSROHIT\\Controllers",
+    "\\IMSROHIT\\Repository",
+    "\\IMSROHIT\\Repository\\Implementation",
+    "\\IMSROHIT\\Repository\\Interface",
+    "\\IMSROHIT\\ViewModels",
+    "\\IMSROHIT\\Views",
+    "\\IMSROHIT\\Views\\shared"
+  ],
+  "SelectedNode": "\\IMSROHIT\\Views\\_ViewStart.cshtml",
+  "PreviewInSolutionExplorer": false
+}

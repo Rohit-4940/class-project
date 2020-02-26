@@ -1,0 +1,104 @@
+﻿@model HomeeditViewModel;
+@{ 
+   var photopath = "~/images/" + (Model.Existingphoto ?? "img1.jpg");
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/twitter-bootstrap/js/bootstrap.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <style>
+        body {
+            background-color: #FBFCFC;
+        }
+
+        .container {
+            background-color: white;
+            height: 500px;
+            width: 750px;
+            margin-top: 15px;
+           
+        }
+        .foot{
+            height:180px;
+            width:250px;
+            background-color:black;
+            margin-top:-50px;
+             margin-right:15px;
+        }
+        .text-center{
+            font-family:cursive;
+        }
+    </style>
+    <form asp-controller="Home" asp-action="edit" method="post" class="mt-3" enctype="multipart/form-data">
+        <div class="container">
+            <input hidden asp-for="Id" />
+            <input hidden asp-for="Existingphoto" />
+            <div class="text"></div>
+            <h2 class="text-center" style="margin-top:10px">Edit Form</h2>
+            <div class="form-group">
+
+                @*<div class="input-group" style="margin-top:35px">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="id" type="text" class="form-control" name="id" placeholder="Enter Your id(Not Nessary)">
+                </div>*@
+                <div class="input-group" style="margin-top:25px">
+                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter Your Name"><br />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+                 <input  type="text" class="form-control" asp-for="Email" placeholder="Email"><br />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+                    <input type="text" class="form-control" asp-for="Department" placeholder="Department"><br />
+                    <br />
+                </div>
+                <span asp-validation-for="Department" class="text-danger"></span>
+                <div class="input-group" style="margin-top:25px">
+
+                    <div class="custom-file">
+                        <input class="form-control custom-file-input" multiple asp-for="photos">
+                        <label class="custom-file-label">click here to change photo...</label>
+                    </div>
+                    <br />
+                </div>
+                <div class="input-group" style="margin-top:35px">
+                    <button class="btn btn-info mr-3" type="submit">Update</button>
+                   <a asp-controller="Home" asp-action="index" class="btn btn-info">cancel</a>
+                </div>
+                <div class="foot float-right">
+                    <img src="@photopath" asp-append-version="true"style="height:180px;" width="250" asp-for="photos"/>
+                </div>
+            </div>
+        </div>
+        @section Scripts{
+            <script>
+                $(document).ready(function () {
+                    $('.custom-file-input').on("change", function () {
+                        var filelabel = $(this).next('.custom-file-label');
+                        var files = $(this)[0].files;
+                        if (files.length > 1) {
+                            filelabel.html(files.length + 'files selected')
+                        }
+                        else if (files.length == 1) {
+                            filelabel.html(files[0].name);
+                        }
+                    });
+                });
+                //$(document).ready(function () {
+                //    $('.custom-file-input').on("change", function () {
+                //        var filename = $(this).val().split("\\").pop();
+                //        $(this).next('.custom-file-label').html(filename);
+                //    });
+                //});
+            </script>
+        }
+    </form>
+  
+
+</body>
+</html>
